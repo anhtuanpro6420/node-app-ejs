@@ -7,8 +7,8 @@
     <header><% include ../partials/header %></header>
     <main>
       <div class="jumbotron">
-        <h1>User register</h1>
-        <form action="/users/register" method="POST">
+        <h1>Login</h1>
+        <form action="/auth/login" method="POST">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input
@@ -31,9 +31,6 @@
             />
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
-          <span class="text-mute"
-            >Already has an account? <a href="/auth/login">Login</a></span
-          >
         </form>
       </div>
     </main>
