@@ -11,11 +11,16 @@ const getList = async (req, res) => {
 
 const add = async (req, res) => {
   const { name, amount, price } = req.body;
+  const { file } = req;
+  const { path } = file;
+  const image = path.split("/").slice(1).join("/");
   const product = new Product({
     name,
     amount,
     price,
+    image,
   });
+  console.log(product);
   try {
     await product.save();
     return res.redirect("/products");

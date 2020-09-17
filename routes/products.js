@@ -1,6 +1,8 @@
 const express = require("express");
+const multer = require("multer");
 const router = express.Router();
 const productsController = require("../controllers/products");
+const upload = multer({ dest: "public/uploads/" });
 
 router.get("/", productsController.getList);
 
@@ -11,6 +13,6 @@ router.get("/add", (req, res) => {
   });
 });
 
-router.post("/add", productsController.add);
+router.post("/add", upload.single("image"), productsController.add);
 
 module.exports = router;

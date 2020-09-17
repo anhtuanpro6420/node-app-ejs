@@ -15,7 +15,11 @@
           <div class="product-item">
             <% products.forEach(function(item){ %>
             <div class="card">
-              <img class="card-img-top" src="" alt="Card image cap" />
+              <img
+                class="card-img-top"
+                src="<%= item.image %>"
+                alt="Card image cap"
+              />
               <div class="card-body">
                 <h5 class="card-title"><%= item.name %></h5>
                 <p class="card-text"><%= item.price %></p>
