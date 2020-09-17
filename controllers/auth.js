@@ -1,32 +1,16 @@
-const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const passport = require("passport");
 
-module.exports.renderLogin = (req, res) => {
+const renderLogin = (req, res) => {
   return res.render("auth/login", { title: "Login page" });
 };
 
-module.exports.login = (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+const login = passport.authenticate("local", {
+  successRedirect: "/products",
+  failureRedirect: "/auth/login",
+  failureFlash: true,
+});
 
-  User.findOne({ email }).then((user) => {
-    if (!user) {
-      return res.render("error", { message: "User not found" });
-    }
-    bcrypt
-      .compare(password, user.password)
-      .then((isSame) => {
-        if (isSame) {
-          return res.redirect("/products");
-        } else {
-          return res.render("error", {
-            message: "Password is incorrect",
-            error,
-          });
-        }
-      })
-      .catch((error) => {
-        return res.render("error", { message: "Password is incorrect", error });
-      });
-  });
+module.exports = {
+  renderLogin,
+  login,
 };

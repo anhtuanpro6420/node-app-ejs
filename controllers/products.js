@@ -1,6 +1,3 @@
-const bcrypt = require("bcrypt");
-const Product = require("../models/Product");
-
 module.exports.getList = async (req, res) => {
   // const products = await Product.find();
   const products = [
@@ -41,5 +38,9 @@ module.exports.getList = async (req, res) => {
       price: 24000,
     },
   ];
-  return res.render("products/products", { title: "Product list", products });
+  return res.render("products/products", {
+    title: "Product list",
+    products,
+    email: req.user.email,
+  });
 };

@@ -4,7 +4,6 @@
     <% include ../partials/head %>
   </head>
   <body>
-    <header><% include ../partials/header %></header>
     <main>
       <div class="jumbotron">
         <h1>Login</h1>
@@ -31,6 +30,7 @@
             />
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
+          <% if (messages.error) { %> <%= messages.error %> <% } %>
         </form>
       </div>
     </main>
