@@ -17,7 +17,7 @@ module.exports.login = (req, res) => {
       .compare(password, user.password)
       .then((isSame) => {
         if (isSame) {
-          return res.render("products/products", { title: "Products" });
+          return res.redirect("/products");
         } else {
           return res.render("error", {
             message: "Password is incorrect",
