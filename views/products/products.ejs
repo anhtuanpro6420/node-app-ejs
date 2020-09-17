@@ -21,8 +21,9 @@
                 alt="Card image cap"
               />
               <div class="card-body">
-                <h5 class="card-title"><%= item.name %></h5>
-                <p class="card-text"><%= item.price %></p>
+                <h5 class="card-title">Name: <%= item.name %></h5>
+                <p class="card-text">Price: <%= item.price %></p>
+                <p class="card-text">Created by: <%= item.createdBy.email %></p>
                 <a href="#" class="btn btn-primary">Add to card</a>
               </div>
             </div>
