@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const { likeHandler } = require("../helpers/Like");
 
 const getList = async (req, res) => {
   const products = await Product.find().populate("createdBy");
@@ -22,7 +23,6 @@ const add = async (req, res) => {
     image,
     createdBy,
   });
-  console.log(product);
   try {
     await product.save();
     return res.redirect("/products");
@@ -33,7 +33,24 @@ const add = async (req, res) => {
   }
 };
 
+const like = async (req, res) => {
+  const { productId } = req.params;
+  const currentUserId = req.user._id;
+  try {
+    const product = await Product.findById(productId).populate("likes");
+    if (product) {
+      likeHandler(product, currentUserId);
+    }
+    return res.redirect("/products");
+  } catch (error) {
+    if (error) {
+      return res.redirect("error");
+    }
+  }
+};
+
 module.exports = {
   getList,
   add,
+  like,
 };

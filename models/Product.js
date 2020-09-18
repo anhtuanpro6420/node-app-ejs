@@ -19,6 +19,7 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  likes: [{ type: Schema.Types.ObjectId, ref: "Like" }],
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: "User",

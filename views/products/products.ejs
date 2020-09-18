@@ -24,7 +24,10 @@
                 <h5 class="card-title">Name: <%= item.name %></h5>
                 <p class="card-text">Price: <%= item.price %></p>
                 <p class="card-text">Created by: <%= item.createdBy.email %></p>
-                <a href="#" class="btn btn-primary">Add to card</a>
+                <form action="/products/like/<%= item._id %>" method="POST">
+                  <button type="submit" class="btn btn-primary">Like</button>
+                  <%= item.likes.length %> likes
+                </form>
               </div>
             </div>
             <% }) %>

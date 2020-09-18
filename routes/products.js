@@ -15,4 +15,6 @@ router.get("/add", (req, res) => {
 
 router.post("/add", upload.single("image"), productsController.add);
 
+router.post("/like/:productId", productsController.like);
+
 module.exports = router;
