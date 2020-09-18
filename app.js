@@ -12,8 +12,10 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 
-// Modules
+// Config
 const initializePassport = require("./config/passport");
+
+// Middlewares
 const authMiddlewares = require("./middlewares/auth");
 const { checkAuthenticated, checkNotAuthenticated } = authMiddlewares;
 
@@ -23,6 +25,9 @@ const authRouter = require("./routes/auth");
 const usersRouter = require("./routes/users");
 const productsRouter = require("./routes/products");
 const logoutRouter = require("./routes/logout");
+
+// Jobs
+const mailJobs = require("./services/jobs/mail-jobs");
 
 const app = express();
 require("./db/mongoose-connect.js");
@@ -56,6 +61,9 @@ app.use("/users", checkAuthenticated, usersRouter);
 app.use("/products", checkAuthenticated, productsRouter);
 app.use("/logout", checkAuthenticated, logoutRouter);
 app.use("/", checkAuthenticated, indexRouter);
+
+// Start jobs
+// mailJobs.mailTask.start();
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
