@@ -9,6 +9,18 @@
       <div class="jumbotron">
         <h1>Products</h1>
         <div class="controls-container">
+          <form action="/photos/search" method="POST" class="form-inline">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="product-name"
+                placeholder="Search image"
+                name="title"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
           <a href="/products/add">Add new</a>
         </div>
         <div class="products">

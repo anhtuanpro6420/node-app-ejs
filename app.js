@@ -17,6 +17,9 @@ const RedisStore = require('connect-redis')(session);
 // Config
 const initializePassport = require('./config/passport');
 
+// Services
+// const photoServices = require('./services/dummyData/photos');
+
 // Middlewares
 const authMiddlewares = require('./middlewares/auth');
 const { checkAuthenticated, checkNotAuthenticated } = authMiddlewares;
@@ -27,6 +30,7 @@ const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const logoutRouter = require('./routes/logout');
+const photosRouter = require('./routes/photos');
 
 // Jobs
 const mailJobs = require('./services/jobs/mail-jobs');
@@ -70,11 +74,15 @@ app.use(methodOverride('_method'));
 app.use('/auth', checkNotAuthenticated, authRouter);
 app.use('/users', checkAuthenticated, usersRouter);
 app.use('/products', checkAuthenticated, productsRouter);
+app.use('/photos', checkAuthenticated, photosRouter);
 app.use('/logout', checkAuthenticated, logoutRouter);
 app.use('/', checkAuthenticated, indexRouter);
 
 // Start jobs
 // mailJobs.mailTask.start();
+
+// Use services
+// photoServices.fetchPhotos();
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
