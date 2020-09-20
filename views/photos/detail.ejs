@@ -8,23 +8,19 @@
     <main>
       <div class="jumbotron">
         <h1>Detail</h1>
-        <div class="products">
-          <div class="product-item">
-            <% photos.forEach(function(item){ %>
-            <div class="card">
-              <img
-                class="card-img-top"
-                src="<%= item.url %>"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Name: <%= item.title %></h5>
-                <p class="card-text">Price: <%= item.albumId %></p>
-              </div>
-            </div>
-            <% }) %>
+        <% if (photo) { %>
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="<%= photo.url %>"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Name: <%= photo.title %></h5>
+            <p class="card-text">Price: <%= photo.albumId %></p>
           </div>
         </div>
+        <% } %>
       </div>
     </main>
 
