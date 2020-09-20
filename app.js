@@ -35,6 +35,12 @@ const photosRouter = require('./routes/photos');
 // Jobs
 const mailJobs = require('./services/jobs/mail-jobs');
 
+// Redis connection
+const redisClient = require('./db/redis');
+redisClient.on('connect', function () {
+  console.log('Successfully connected to Redis!');
+});
+
 const app = express();
 require('./db/mongoose-connect.js');
 initializePassport(passport);
@@ -51,7 +57,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
 // Redis
-const redisClient = redis.createClient();
+// const redisClient = redis.createClient();
+// redisClient.on('connect', function () {
+//   console.log('Successfully connected to Redis!');
+// });
 
 // Session
 app.use(
