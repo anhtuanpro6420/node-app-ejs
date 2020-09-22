@@ -9,7 +9,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
 const flash = require('express-flash');
-const redis = require('redis');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const RedisStore = require('connect-redis')(session);
@@ -56,12 +55,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
-// Redis
-// const redisClient = redis.createClient();
-// redisClient.on('connect', function () {
-//   console.log('Successfully connected to Redis!');
-// });
-
 // Session
 app.use(
   session({
@@ -89,6 +82,17 @@ app.use('/', checkAuthenticated, indexRouter);
 
 // Start jobs
 // mailJobs.mailTask.start();
+
+// Send mail using queue
+const mailService = require('./services/mail/mail');
+const mailOptions = {
+  from: process.env.EMAIL,
+  to: 'anhtuanpro6421@yopmail.com',
+  subject: 'Test mail queue',
+  text: 'Test mail node app',
+  html: '<b>Hello world</b>',
+};
+mailService.sendMailQueue(mailOptions);
 
 // Use services
 // photoServices.fetchPhotos();

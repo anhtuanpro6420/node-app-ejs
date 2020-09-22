@@ -4,4 +4,5 @@ module.exports = {
   port: process.env.PORT,
   email: process.env.EMAIL,
   emailPassword: process.env.EMAIL_PASSWORD,
+  redisUrl: process.env.REDIS_URL,
 };
