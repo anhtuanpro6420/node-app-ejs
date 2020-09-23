@@ -97,6 +97,10 @@ app.use('/', checkAuthenticated, indexRouter);
 // Use services
 // photoServices.fetchPhotos();
 
+// Read files
+// const readFile = require('./services/documents/csv');
+// readFile();
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
