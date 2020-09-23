@@ -84,15 +84,15 @@ app.use('/', checkAuthenticated, indexRouter);
 // mailJobs.mailTask.start();
 
 // Send mail using queue
-const mailService = require('./services/mail/mail');
-const mailOptions = {
-  from: process.env.EMAIL,
-  to: 'anhtuanpro6421@yopmail.com',
-  subject: 'Test mail queue',
-  text: 'Test mail node app',
-  html: '<b>Hello world</b>',
-};
-mailService.sendMailQueue(mailOptions);
+// const mailService = require('./services/mail/mail');
+// const mailOptions = {
+//   from: process.env.EMAIL,
+//   to: 'anhtuanpro6421@yopmail.com',
+//   subject: 'Test mail queue',
+//   text: 'Test mail node app',
+//   html: '<b>Hello world</b>',
+// };
+// mailService.sendMailQueue(mailOptions);
 
 // Use services
 // photoServices.fetchPhotos();
