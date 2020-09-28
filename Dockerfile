@@ -1,17 +1,13 @@
-FROM node:12
+FROM node:13-alpine
 
-# Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package*.json ./
+COPY . .
 
 RUN npm install
 
-# Bundle app source
-COPY . .
+CMD ["npm", "run", "dev"]
 
-EXPOSE 8080
-
-CMD [ "npm", "start" ]
+# Production
+# RUN npm install -g pm2
+# CMD ["pm2-runtime", "ecosystem.config.js", "--env", "production"]

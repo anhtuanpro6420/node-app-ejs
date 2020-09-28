@@ -1,11 +1,11 @@
-const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const bcrypt = require('bcrypt');
+const User = require('../models/User');
 
-module.exports.register = async (req, res) => {
+const register = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (user) {
-    errors.message = "Email has already exist!";
-    return res.redirect("/users/register");
+    errors.message = 'Email has already exist!';
+    return res.render('users/register');
   } else {
     const newUser = new User({
       email: req.body.email,
@@ -20,13 +20,17 @@ module.exports.register = async (req, res) => {
           .save()
           .then((user) => {
             if (user) {
-              return res.redirect("/auth/login");
+              return res.redirect('/auth/login');
             }
           })
           .catch((err) => {
-            return res.redirect("/users/register");
+            return res.render('users/register');
           });
       });
     });
   }
+};
+
+module.exports = {
+  register,
 };

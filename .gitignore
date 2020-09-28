@@ -9,3 +9,5 @@ package-lock.json
 public/uploads
 
 .DS_STORE
+
+.docker
