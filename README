@@ -1,5 +1,5 @@
 # Build image
-docker build -t learning-docker/docker-node-mongo-redis:v1 .
+docker build -t docker-my-node-app:v1 .
 
 # Mount node_modules from container to code in host computer
 docker run --rm -v $(pwd):/app -w /app node:13-alpine npm install
