@@ -3,6 +3,7 @@ version: '3.4'
 services:
   app:
     image: docker-my-node-app:v1
+    build: .
     volumes:
       - ./:/app # mount từ môi trường gốc vào trong để nếu các bạn thay đổi code thì bên trong sẽ tự động cập nhật
     environment: # phần này ta định nghĩa ở file .env nhé, test azure deploy
