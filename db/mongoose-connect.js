@@ -3,7 +3,7 @@ const { DB_HOST, DB_PORT, DB_NAME } = require('../config/env-variables');
 
 const dbHost = DB_HOST || 'localhost';
 const dbPort = DB_PORT || 27017;
-const dbName = DB_NAME || 'my_db_name';
+const dbName = DB_NAME || 'store';
 const mongoUrl = `mongodb://${dbHost}:${dbPort}/${dbName}`;
 
 const connectWithRetry = function () {

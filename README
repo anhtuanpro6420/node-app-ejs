@@ -1,5 +1,0 @@
-# Mount node_modules from container to code in host computer
-docker run --rm -v $(pwd):/app -w /app node:13-alpine npm install
-
-# Run project
-docker-compose up
